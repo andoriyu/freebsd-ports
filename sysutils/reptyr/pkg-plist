@@ -1,0 +1,5 @@
+%%BASH%%/etc/bash_completion.d/reptyr
+bin/reptyr
+share/man/fr/man1/reptyr.1
+share/man/man1/reptyr.1
+%%BASH%%@dir /etc/bash_completion.d
