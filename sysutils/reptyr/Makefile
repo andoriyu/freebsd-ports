@@ -1,18 +1,16 @@
 # $FreeBSD$
-PORTNAME=	reptyr
-PORTVERSION=	0.6.3a
-CATEGORIES=	sysutils
+PORTNAME=	influxdb
+PORTVERSION= 0.9.0-rc33
+CATEGORIES=	databases
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	nelhage
-GH_PROJECT=	reptyr
-GH_TAGNAME=	6fb15adb4552e170bcd5e648803da83dba57283b
+GH_ACCOUNT=	influx
+GH_PROJECT=	influx
+GH_TAGNAME=	v0.9.0-rc33
 
 MAINTAINER=	andoriyu@gmail.com
 COMMENT=	Reparent a running program to a new terminal
 
-
-USES=gmake
 
 OPTIONS_DEFINE=	BASH
 OPTIONS_SUB=	yes
@@ -21,8 +19,5 @@ OPTIONS_SUB=	yes
 ONLY_FOR_ARCHS=	i386 amd64
 
 .include <bsd.port.pre.mk>
-.if ${OSVERSION} < 1000000
-BROKEN=	does not supported on FreeBSD older than 10.0
-.endif
-
+.include "${PORTSDIR}/lang/go/files/bsd.go.mk"
 .include <bsd.port.post.mk>
