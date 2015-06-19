@@ -1,5 +1,3 @@
-
-
 # $FreeBSD$
 PORTNAME=	cargo
 PORTVERSION= 1.0.0-pre
@@ -12,10 +10,12 @@ GH_COMMIT = 19af88c21a
 
 MAINTAINER=	andoriyu@gmail.com
 COMMENT=	Reparent a running program to a new terminal
-USES= cmake python:2 curl pkgconf
+USES= cmake python:2
 
 
-BUILD_DEPENDS=	rustc:${PORTSDIR}/lang/rust
+BUILD_DEPENDS=	rustc:${PORTSDIR}/lang/rust \
+	curl:${PORTSDIR}/ftp/curl \
+	pkg-config:${PORTSDIR}/devel/pkgconf
 
 ONLY_FOR_ARCHS=	amd64
 MAKE_ARGS= ARCH=x86_64
