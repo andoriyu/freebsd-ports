@@ -9,15 +9,15 @@
 # Add the following lines to /etc/rc.conf to enable influxdb:
 # influxd_enable="YES"
 #
-# influxd_enable (bool):	Set to YES to enable influxd
-#				Default: NO
-# influxd_conf (str):		influxd configuration file
-#				Default: ${PREFIX}/etc/influxd.conf
-# influxd_user (str):		influxd daemon user
-#				Default: influxd
-# influxd_group (str):		influxd daemon group
-#				Default: influxd
-# influxd_flags (str):		Extra flags passed to influxd
+# influxd_enable (bool):       Set to YES to enable influxd
+#                              Default: NO
+# influxd_conf (str):          influxd configuration file
+#                              Default: ${PREFIX}/etc/influxd.conf
+# influxd_user (str):          influxd daemon user
+#                              Default: influxd
+# influxd_group (str):         influxd daemon group
+#                              Default: influxd
+# influxd_flags (str):         Extra flags passed to influxd
 
 . /etc/rc.subr
 

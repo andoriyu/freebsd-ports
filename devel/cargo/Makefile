@@ -1,12 +1,12 @@
 # $FreeBSD$
 PORTNAME=	cargo
-PORTVERSION= 1.0.0-pre
+PORTVERSION= 1.0.0.pre
 CATEGORIES=	devel
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	rust-lang
 GH_PROJECT=	cargo
-GH_COMMIT = 19af88c21a
+GH_TAGNAME = 19af88c21a
 
 MAINTAINER=	andoriyu@gmail.com
 COMMENT=	Reparent a running program to a new terminal
