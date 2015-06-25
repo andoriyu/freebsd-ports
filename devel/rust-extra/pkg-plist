@@ -1,0 +1,3 @@
+%%DATADIR%%/bin/bindgen
+%%DATADIR%%/bin/cargo
+%%DATADIR%%/bin/racer
