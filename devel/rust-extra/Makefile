@@ -17,9 +17,11 @@ ONLY_FOR_ARCHS= amd64
 
 RUN_DEPENDS= rustc:${PORTSDIR}/lang/rust
 LIB_DEPENDS= libssh2.so:${PORTSDIR}/security/libssh2\
-	libgit2:${PORTSDIR}/devel/libgit2\
-	libssl:${PORTSDIR}/security/openssl\
-	libcurl:${PORTSDIR}/ftp/curl
+	libgit2.:${PORTSDIR}/devel/libgit2\
+	libcurl.so.4:${PORTSDIR}/ftp/curl
+
+.include <bsd.ports.pre.mk>
+USE_OPENSSL=yes
 
 do-install:
 	cd ${WRKSRC} && ${COPYTREE_SHARE} \* ${STAGEDIR}${DATADIR}
@@ -27,4 +29,4 @@ do-install:
 	${CHMOD} ${BINMODE} ${STAGEDIR}${DATADIR}/bin/bindgen
 	${CHMOD} ${BINMODE} ${STAGEDIR}${DATADIR}/bin/racer
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>
