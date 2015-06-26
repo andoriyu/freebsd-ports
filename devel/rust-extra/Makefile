@@ -18,10 +18,10 @@ ONLY_FOR_ARCHS= amd64
 RUN_DEPENDS= rustc:${PORTSDIR}/lang/rust
 LIB_DEPENDS= libssh2.so:${PORTSDIR}/security/libssh2\
 	libgit2.so:${PORTSDIR}/devel/libgit2\
-	libssl:security/openssl\
-	libcurl:ftp/curl\
-	libclang:lang/clang36
+	curl:ftp/curl\
+	clang:lang/clang36
 
+OPENSSL_USE=            OPENSSL=yes
 
 do-install:
 	cd ${WRKSRC} && ${COPYTREE_SHARE} \* ${STAGEDIR}${DATADIR}
