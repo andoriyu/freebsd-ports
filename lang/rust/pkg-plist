@@ -71,7 +71,9 @@ lib/rustlib/x86_64-unknown-freebsd/lib/libterm-7d23ff90.rlib
 lib/rustlib/x86_64-unknown-freebsd/lib/libterm-7d23ff90.so
 lib/rustlib/x86_64-unknown-freebsd/lib/libtest-7d23ff90.rlib
 lib/rustlib/x86_64-unknown-freebsd/lib/libtest-7d23ff90.so
-lib/rustlib/x86_64-unknown-freebsd/lib/libunicode-7d23ff90.rlib
+lib/rustlib/x86_64-unknown-freebsd/lib/librustc_data_structures-7d23ff90.so
+lib/rustlib/x86_64-unknown-freebsd/lib/librustc_unicode-7d23ff90.rlib
+
 man/man1/rustc.1.gz
 man/man1/rustdoc.1.gz
 @dir lib/rustlib/x86_64-unknown-freebsd/lib
