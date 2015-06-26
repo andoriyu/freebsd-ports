@@ -17,7 +17,7 @@ ONLY_FOR_ARCHS= amd64
 
 RUN_DEPENDS= rustc:${PORTSDIR}/lang/rust
 LIB_DEPENDS= libssh2.so:${PORTSDIR}/security/libssh2\
-	libgit2.:${PORTSDIR}/devel/libgit2\
+	libgit2.so:${PORTSDIR}/devel/libgit2\
 	libcurl.so.4:${PORTSDIR}/ftp/curl
 
 .include <bsd.port.pre.mk>
@@ -30,3 +30,4 @@ do-install:
 	${CHMOD} ${BINMODE} ${STAGEDIR}${DATADIR}/bin/racer
 
 .include <bsd.port.post.mk>
+
