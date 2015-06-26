@@ -19,7 +19,8 @@ RUN_DEPENDS= rustc:${PORTSDIR}/lang/rust
 LIB_DEPENDS= libssh2.so:${PORTSDIR}/security/libssh2\
 	libgit2.so:${PORTSDIR}/devel/libgit2\
 	libssl.so.8:security/openssl\
-	libcurl.so.4:ftp/curl
+	libcurl.so.4:ftp/curl\
+	libclang.so:lang/clang36
 
 
 do-install:
