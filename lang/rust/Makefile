@@ -38,7 +38,8 @@ RUST_BOOT_SIG=	2015-04-27-857ef6e-freebsd-x86_64-18925db56f6298cc190d1f41615ab58
 USES=		gmake python:2,build
 HAS_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-valgrind --disable-docs \
-		--enable-clang --mandir=${MANPREFIX}/man
+		--enable-clang --mandir=${MANPREFIX}/man \
+		--release-channel=stable
 
 # Use LLVM from ports, instead of the copy shipped with rust.
 LLVM_VER=	36
