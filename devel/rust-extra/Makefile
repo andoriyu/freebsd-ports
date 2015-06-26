@@ -20,7 +20,7 @@ LIB_DEPENDS= libssh2.so:${PORTSDIR}/security/libssh2\
 	libgit2.:${PORTSDIR}/devel/libgit2\
 	libcurl.so.4:${PORTSDIR}/ftp/curl
 
-.include <bsd.ports.pre.mk>
+.include <bsd.port.pre.mk>
 USE_OPENSSL=yes
 
 do-install:
