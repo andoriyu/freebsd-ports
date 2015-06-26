@@ -17,9 +17,10 @@ ONLY_FOR_ARCHS= amd64
 
 RUN_DEPENDS= rustc:${PORTSDIR}/lang/rust
 LIB_DEPENDS= libssh2.so:${PORTSDIR}/security/libssh2\
-	libgit2.so:${PORTSDIR}/devel/libgit2\
-	curl:ftp/curl\
-	clang:lang/clang36
+	libgit2:${PORTSDIR}/devel/libgit2\
+	libssl:${PORTSDIR}/security/openssl\
+	libcurl:${PORTSDIR}/ftp/curl\
+	libclang:${PORTSDIR}/lang/clang36
 
 OPENSSL_USE=            OPENSSL=yes
 
