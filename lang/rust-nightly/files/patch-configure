@@ -1,0 +1,10 @@
+--- configure.orig	2015-06-27 11:07:39.854550120 -0700
++++ configure	2015-06-27 11:07:51.637549417 -0700
+@@ -696,7 +696,6 @@
+ 
+ step_msg "looking for build programs"
+ 
+-probe_need CFG_CURLORWGET  curl wget
+ if [ -z "$CFG_PYTHON_PROVIDED" ]; then
+     probe_need CFG_PYTHON      python2.7 python2.6 python2 python
+ fi
