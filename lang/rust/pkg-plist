@@ -18,6 +18,7 @@ lib/librustc_privacy-7d23ff90.so
 lib/librustc_resolve-7d23ff90.so
 lib/librustc_trans-7d23ff90.so
 lib/librustc_typeck-7d23ff90.so
+lib/librustc_data_structures-7d23ff90.so
 lib/librustdoc-7d23ff90.so
 lib/libserialize-7d23ff90.so
 lib/libstd-7d23ff90.so
