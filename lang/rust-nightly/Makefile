@@ -2,8 +2,8 @@
 # $FreeBSD: head/lang/rust/Makefile 390497 2015-06-24 17:09:27Z dumbbell $
 
 PORTNAME=	rust-nightly
-PORTVERSION=	1.2.0
-PORTREVISION=	1
+PORTVERSION=	1.2.0n
+PORTREVISION=	2
 CATEGORIES=	lang
 
 
@@ -21,7 +21,7 @@ RT_TAG=					58ab642
 JEMALLOC_TAG=		e24a1a0
 INSTALLER_TAG=	8e4f8ea
 HOEDOWN_TAG=		238c4d5
-GH_TAGNAME= ba770ae0945346bfd6edc1c07734028c32e48d4e \
+GH_TAGNAME= cb7d0621556fabcdcc36d0da279305ad285ec662 \
 						${RT_TAG}:rt \
 						${JEMALLOC_TAG}:jemalloc \
 						${INSTALLER_TAG}:installer \
@@ -128,6 +128,11 @@ post-install:
 		${STAGEDIR}${PREFIX}/bin/rustdoc \
 		${STAGEDIR}${PREFIX}/lib/*.so \
 		${STAGEDIR}${PREFIX}/lib/rustlib/*/lib/*.so
+	@${RM} \
+		${STAGEDIR}${PREFIX}/lib/rustlib/components \
+		${STAGEDIR}${PREFIX}/lib/rustlib/manifest-rustc \
+		${STAGEDIR}${PREFIX}/lib/rustlib/rust-installer-version \
+		${STAGEDIR}${PREFIX}/lib/rustlib/uninstall.sh
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	@${MV} ${STAGEDIR}${PREFIX}/share/doc/rust/* ${STAGEDIR}${DOCSDIR}
 	@${RMDIR} ${STAGEDIR}${PREFIX}/share/doc/rust

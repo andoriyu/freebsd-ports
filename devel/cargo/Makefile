@@ -28,7 +28,8 @@ USE_BINUTILS=	yes
 CONFIGURE_ARGS= --local-rust-root=/usr/local/
 BUILD_DEPENDS=	rustc:${PORTSDIR}/lang/rust-nightly \
 	curl:${PORTSDIR}/ftp/curl \
-	pkg-config:${PORTSDIR}/devel/pkgconf
+	pkg-config:${PORTSDIR}/devel/pkgconf \
+	cmake:${PORTSDIR}/devel/cmake
 
 ONLY_FOR_ARCHS=	amd64
 MAKE_ARGS= ARCH=x86_64
