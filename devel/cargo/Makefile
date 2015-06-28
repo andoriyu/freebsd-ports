@@ -49,7 +49,6 @@ pre-install:
 		${STAGEDIR}${PREFIX}/lib/rustlib/manifest-cargo \
 		${STAGEDIR}${PREFIX}/lib/rustlib/rust-installer-version \
 		${STAGEDIR}${PREFIX}/lib/rustlib/uninstall.sh
-	${RMDIR} ${STAGEDIR}${PREFIX}/lib/rustlib
 
 post-extract:
 	${MKDIR} ${WRKSRC}/target/dl
