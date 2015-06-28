@@ -1,3 +1,4 @@
+# Created by: Andrey Cherkashin
 # $FreeBSD$
 PORTNAME=	cargo
 PORTVERSION= 0.3.0n
@@ -25,7 +26,7 @@ COMMENT=	Reparent a running program to a new terminal
 USES= gmake python:2
 GNU_CONFIGURE= yes
 USE_BINUTILS=	yes
-CONFIGURE_ARGS= --local-rust-root=/usr/local/
+CONFIGURE_ARGS= --local-rust-root=${LOCALBASE}
 BUILD_DEPENDS=	rustc:${PORTSDIR}/lang/rust-nightly \
 	curl:${PORTSDIR}/ftp/curl \
 	pkg-config:${PORTSDIR}/devel/pkgconf \
@@ -49,13 +50,13 @@ pre-install:
 		${STAGEDIR}${PREFIX}/lib/rustlib/uninstall.sh
 	${RMDIR} ${STAGEDIR}${PREFIX}/lib/rustlib
 
-
 post-extract:
-		@${MKDIR} ${WRKSRC}/target/dl
-			@${LN} -sf ${DISTDIR}/${CARGO_BOOT} ${WRKSRC}/target/dl
-				(cd ${WRKSRC} && find . -type d -exec chmod 0755 {} \;)
-	@${RMDIR} ${WRKSRC}/src/rust-installer
-	@${LN} -sf ${WRKSRC}/../rust-installer-${INSTALLER_TAG} ${WRKSRC}/src/rust-installer
+	${MKDIR} ${WRKSRC}/target/dl
+	${LN} -sf ${DISTDIR}/${CARGO_BOOT} ${WRKSRC}/target/dl
+	(cd ${WRKSRC} && find . -type d -exec chmod 0755 {} \;)
+	${CHMOD} 755 ${WRKSRC}/src/etc/dl-snapshot.py
+	${RMDIR} ${WRKSRC}/src/rust-installer
+	${LN} -sf ${WRKSRC}/../rust-installer-${INSTALLER_TAG} ${WRKSRC}/src/rust-installer
 
 .if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000000
 BROKEN= Only compiles on FreeBSD 10 and 11
