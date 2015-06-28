@@ -1,6 +1,6 @@
---- configure.orignal	2015-06-27 21:45:03.403345143 -0700
-+++ configure	2015-06-27 21:45:17.553344091 -0700
-@@ -342,7 +342,6 @@
+--- configure.orig	2015-06-26 23:23:44 UTC
++++ configure
+@@ -342,7 +342,6 @@ validate_opt
  step_msg "looking for build programs"
  
  probe_need CFG_CURLORWGET  curl wget
