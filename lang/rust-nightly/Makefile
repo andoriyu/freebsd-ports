@@ -2,8 +2,8 @@
 # $FreeBSD: head/lang/rust/Makefile 390497 2015-06-24 17:09:27Z dumbbell $
 
 PORTNAME=	rust-nightly
-PORTVERSION=	1.1.0
-PORTREVISION=	2
+PORTVERSION=	1.2.0
+PORTREVISION=	1
 CATEGORIES=	lang
 
 

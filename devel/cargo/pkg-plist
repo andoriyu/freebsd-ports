@@ -1,0 +1,8 @@
+bin/cargo
+etc/bash_completion.d/cargo
+%%PORTDOCS%%%%DOCSDIR%%/LICENSE-APACHE
+%%PORTDOCS%%%%DOCSDIR%%/LICENSE-MIT
+%%PORTDOCS%%%%DOCSDIR%%/LICENSE-THIRD-PARTY
+%%PORTDOCS%%%%DOCSDIR%%/README.md
+share/man/man1/cargo.1
+share/zsh/site-functions/_cargo
