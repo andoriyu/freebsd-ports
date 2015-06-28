@@ -53,7 +53,7 @@ pre-install:
 post-extract:
 		@${MKDIR} ${WRKSRC}/target/dl
 			@${LN} -sf ${DISTDIR}/${CARGO_BOOT} ${WRKSRC}/target/dl
-				@(cd ${WRKSRC} && find . -type d -exec chmod 0755 {} \;)
+				(cd ${WRKSRC} && find . -type d -exec chmod 0755 {} \;)
 	@${RMDIR} ${WRKSRC}/src/rust-installer
 	@${LN} -sf ${WRKSRC}/../rust-installer-${INSTALLER_TAG} ${WRKSRC}/src/rust-installer
 
