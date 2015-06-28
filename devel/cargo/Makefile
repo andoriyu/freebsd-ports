@@ -30,7 +30,8 @@ CONFIGURE_ARGS= --local-rust-root=${LOCALBASE}
 BUILD_DEPENDS=	rustc:${PORTSDIR}/lang/rust-nightly \
 	curl:${PORTSDIR}/ftp/curl \
 	pkg-config:${PORTSDIR}/devel/pkgconf \
-	cmake:${PORTSDIR}/devel/cmake
+	cmake:${PORTSDIR}/devel/cmake \
+	git:${PORTSDIR}/devel/git 
 
 ONLY_FOR_ARCHS=	amd64
 MAKE_ARGS= ARCH=x86_64
