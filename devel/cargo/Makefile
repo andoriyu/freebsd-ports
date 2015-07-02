@@ -1,17 +1,16 @@
 # Created by: Andrey Cherkashin
 # $FreeBSD$
 PORTNAME=	cargo
-PORTVERSION= 0.3.0n
-PORTREVISION = 1
+PORTVERSION= 0.4.0n
+PORTREVISION = 2
 CATEGORIES=	devel
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	rust-lang
 GH_PROJECT=	cargo \
 						rust-installer:installer
-
 INSTALLER_TAG=	8e4f8ea
-GH_TAGNAME = d1517c8582fc77152ffc7749677dacf8e6e9202f \
+GH_TAGNAME = c8c6e5750e0ebcacf00e5df4f8f09dbe154cac46 \
 						 ${INSTALLER_TAG}:installer
 
 CARGO_SOURCE= ${GH_ACCOUNT}-${GH_PROJECT}-${PORTVERSION}-${GH_TAGNAME}_GH0
