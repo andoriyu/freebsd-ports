@@ -1,22 +1,23 @@
+# Created by: Andrey Cherkashin <andoriyu@gmail.com>
 # $FreeBSD$
+
 PORTNAME=	reptyr
 PORTVERSION=	0.6.3a
 CATEGORIES=	sysutils
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	nelhage
-GH_PROJECT=	reptyr
-GH_TAGNAME=	6fb15adb4552e170bcd5e648803da83dba57283b
-
 MAINTAINER=	andoriyu@gmail.com
 COMMENT=	Reparent a running program to a new terminal
 
+LICENSE=	MIT
 
-USES=gmake
+USE_GITHUB=	yes
+GH_ACCOUNT=	nelhage
+GH_TAGNAME=	6fb15adb4552e170bcd5e648803da83dba57283b
+
+USES=	gmake
 
 OPTIONS_DEFINE=	BASH
 OPTIONS_SUB=	yes
-
 
 ONLY_FOR_ARCHS=	i386 amd64
 
@@ -25,4 +26,8 @@ ONLY_FOR_ARCHS=	i386 amd64
 BROKEN=	does not supported on FreeBSD older than 10.0
 .endif
 
+post-install:
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/reptyr
+	${GZIP_CMD} ${STAGEDIR}${PREFIX}/share/man/man1/reptyr.1
+	${GZIP_CMD} ${STAGEDIR}${PREFIX}/share/man/fr/man1/reptyr.1
 .include <bsd.port.post.mk>
