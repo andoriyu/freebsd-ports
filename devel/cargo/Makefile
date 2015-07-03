@@ -2,7 +2,7 @@
 # $FreeBSD$
 PORTNAME=	cargo
 PORTVERSION= 0.4.0n
-PORTREVISION = 2
+PORTREVISION = 5
 CATEGORIES=	devel
 
 USE_GITHUB=	yes
@@ -10,7 +10,7 @@ GH_ACCOUNT=	rust-lang
 GH_PROJECT=	cargo \
 						rust-installer:installer
 INSTALLER_TAG=	8e4f8ea
-GH_TAGNAME = c8c6e5750e0ebcacf00e5df4f8f09dbe154cac46 \
+GH_TAGNAME = a48fe5f4c13944a67b536f35d7502914737b3fa4 \
 						 ${INSTALLER_TAG}:installer
 
 CARGO_SOURCE= ${GH_ACCOUNT}-${GH_PROJECT}-${PORTVERSION}-${GH_TAGNAME}_GH0
@@ -31,7 +31,7 @@ BUILD_DEPENDS=	rustc:${PORTSDIR}/lang/rust-nightly \
 	curl:${PORTSDIR}/ftp/curl \
 	pkg-config:${PORTSDIR}/devel/pkgconf \
 	cmake:${PORTSDIR}/devel/cmake \
-	git:${PORTSDIR}/devel/git 
+	git:${PORTSDIR}/devel/git
 
 ONLY_FOR_ARCHS=	amd64
 MAKE_ARGS= ARCH=x86_64
