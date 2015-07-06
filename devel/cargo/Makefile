@@ -27,7 +27,7 @@ USES= gmake python:2
 GNU_CONFIGURE= yes
 USE_BINUTILS=	yes
 CONFIGURE_ARGS= --local-rust-root=${LOCALBASE}
-BUILD_DEPENDS=	rustc:${PORTSDIR}/lang/rust-nightly \
+BUILD_DEPENDS=	rustc:${PORTSDIR}/lang/rust \
 	curl:${PORTSDIR}/ftp/curl \
 	pkg-config:${PORTSDIR}/devel/pkgconf \
 	cmake:${PORTSDIR}/devel/cmake \
