@@ -3,7 +3,7 @@
 
 PORTNAME=	rust-nightly
 PORTVERSION=	1.2.0n
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	lang
 
 
@@ -21,7 +21,7 @@ RT_TAG=					58ab642
 JEMALLOC_TAG=		e24a1a0
 INSTALLER_TAG=	8e4f8ea
 HOEDOWN_TAG=		238c4d5
-GH_TAGNAME= 7809e76eb6150a475b3381d5d207638e4c55cb08 \
+GH_TAGNAME= 0fbcebaaec518a0a39f0b835cd52e9edfaba9cc2 \
 						${RT_TAG}:rt \
 						${JEMALLOC_TAG}:jemalloc \
 						${INSTALLER_TAG}:installer \
