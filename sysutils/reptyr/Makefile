@@ -14,7 +14,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	nelhage
 GH_TAGNAME=	6fb15adb4552e170bcd5e648803da83dba57283b
 
-USES=	gmake
+USES=		gmake
 
 OPTIONS_DEFINE=	BASH
 OPTIONS_SUB=	yes
@@ -26,8 +26,13 @@ ONLY_FOR_ARCHS=	i386 amd64
 BROKEN=	does not supported on FreeBSD older than 10.0
 .endif
 
+.if ${PORT_OPTIONS:MBASH}
+BUILD_DEPENDS=	${LOCALBASE}/share/bash-completion/bash_completion:${PORTSDIR}/shells/bash-completion
+.endif
+
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/reptyr
 	${GZIP_CMD} ${STAGEDIR}${PREFIX}/share/man/man1/reptyr.1
 	${GZIP_CMD} ${STAGEDIR}${PREFIX}/share/man/fr/man1/reptyr.1
+
 .include <bsd.port.post.mk>
