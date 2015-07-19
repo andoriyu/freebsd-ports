@@ -2,7 +2,7 @@
 # $FreeBSD$
 PORTNAME=	cargo
 PORTVERSION= 0.4.0n
-PORTREVISION = 7
+PORTREVISION = 8
 CATEGORIES=	devel
 
 USE_GITHUB=	yes
@@ -10,7 +10,7 @@ GH_ACCOUNT=	rust-lang
 GH_PROJECT=	cargo \
 						rust-installer:installer
 INSTALLER_TAG=	8e4f8ea
-GH_TAGNAME = aa6967ff4603ecef43001fa3862b98af6a759663 \
+GH_TAGNAME = a10897c20de22a3ba6f47d1cb551a962a5e160f2 \
 						 ${INSTALLER_TAG}:installer
 
 CARGO_SOURCE= ${GH_ACCOUNT}-${GH_PROJECT}-${PORTVERSION}-${GH_TAGNAME}_GH0
@@ -27,7 +27,7 @@ USES= gmake python:2
 GNU_CONFIGURE= yes
 USE_BINUTILS=	yes
 CONFIGURE_ARGS= --local-rust-root=${LOCALBASE}
-BUILD_DEPENDS=	rustc:${PORTSDIR}/lang/rust \
+BUILD_DEPENDS=	rustc:${PORTSDIR}/lang/rust-nightly \
 	curl:${PORTSDIR}/ftp/curl \
 	pkg-config:${PORTSDIR}/devel/pkgconf \
 	cmake:${PORTSDIR}/devel/cmake \
