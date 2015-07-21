@@ -1,8 +1,9 @@
 # Created by: Andrey Cherkashin <andoriyu@gmail.com>
-# $FreeBSD$
+# $FreeBSD: head/sysutils/reptyr/Makefile 392402 2015-07-18 01:12:12Z pi $
 
 PORTNAME=	reptyr
 PORTVERSION=	0.6.3a
+PORTREVISION=	1
 CATEGORIES=	sysutils
 
 MAINTAINER=	andoriyu@gmail.com
@@ -22,17 +23,19 @@ OPTIONS_SUB=	yes
 ONLY_FOR_ARCHS=	i386 amd64
 
 .include <bsd.port.pre.mk>
-.if ${OSVERSION} < 1000000
-BROKEN=	does not supported on FreeBSD older than 10.0
-.endif
-
 .if ${PORT_OPTIONS:MBASH}
 BUILD_DEPENDS=	${LOCALBASE}/share/bash-completion/bash_completion:${PORTSDIR}/shells/bash-completion
 .endif
 
+BROKEN_FreeBSD_8=	Not supported on FreeBSD older than 10.0
+BROKEN_FreeBSD_9=	Not supported on FreeBSD older than 10.0
+
 post-install:
+.if ${PORT_OPTIONS:MBASH}
+	${MKDIR} ${STAGEDIR}${PREFIX}/etc/bash_completion.d
+	${INSTALL_SCRIPT} ${WRKSRC}/reptyr.bash \
+		${STAGEDIR}${PREFIX}/etc/bash_completion.d/reptyr
+.endif
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/reptyr
-	${GZIP_CMD} ${STAGEDIR}${PREFIX}/share/man/man1/reptyr.1
-	${GZIP_CMD} ${STAGEDIR}${PREFIX}/share/man/fr/man1/reptyr.1
 
 .include <bsd.port.post.mk>
