@@ -1,39 +1,31 @@
-# Created by: Jyun-Yan You <jyyou@cs.nctu.edu.tw>
-# $FreeBSD: head/lang/rust/Makefile 390497 2015-06-24 17:09:27Z dumbbell $
+# Created by: Jean-Sébastien Pédron <dumbbell@FreeBSD.org>
+# $FreeBSD: head/lang/rust-nightly/Makefile 392106 2015-07-14 22:36:53Z dumbbell $
 
 PORTNAME=	rust-nightly
-PORTVERSION=	1.2.0n
-PORTREVISION=	9
+PORTVERSION=	1.3.0.20150703
 CATEGORIES=	lang
-
+MASTER_SITES=	http://static.rust-lang.org/stage0-snapshots/:bootstrap
+DISTFILES=	${RUST_BOOT}:bootstrap
+EXTRACT_ONLY=	${DISTNAME}${_GITHUB_EXTRACT_SUFX} \
+		${DISTFILE_compiler_rt} \
+		${DISTFILE_hoedown} \
+		${DISTFILE_jemalloc} \
+		${DISTFILE_rust_installer}
 
 USE_GITHUB=	yes
+GH_ACCOUNT=	rust-lang
+GH_PROJECT=	rust \
+		compiler-rt:compiler_rt \
+		hoedown:hoedown \
+		jemalloc:jemalloc \
+		rust-installer:rust_installer
+GH_TAGNAME=	7b148381c7 \
+		58ab642:compiler_rt \
+		238c4d5:hoedown \
+		e24a1a0:jemalloc \
+		8e4f8ea:rust_installer
 
-GH_ACCOUNT=	rust-lang \
-
-GH_PROJECT= rust \
-						compiler-rt:rt \
-						jemalloc:jemalloc \
-						rust-installer:installer \
-						hoedown:hoedown
-
-RT_TAG=					58ab642
-JEMALLOC_TAG=		e24a1a0
-INSTALLER_TAG=	8e4f8ea
-HOEDOWN_TAG=		238c4d5
-GH_TAGNAME= a41178e8582001d7075d14699542e671c78badef \
-						${RT_TAG}:rt \
-						${JEMALLOC_TAG}:jemalloc \
-						${INSTALLER_TAG}:installer \
-						${HOEDOWN_TAG}:hoedown
-MASTER_SITES=	${GH} \
-	http://static.rust-lang.org/stage0-snapshots/:bootstrap
-
-RUST_SOURCE= ${GH_ACCOUNT}-${GH_PROJECT}-${PORTVERSION}-${GH_TAGNAME}_GH0
-DISTFILES+= ${RUST_SOURCE} \
-	${RUST_BOOT}:bootstrap
-
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	dumbbell@FreeBSD.org
 COMMENT=	Language with a focus on memory safety and concurrency
 
 LICENSE=	APACHE20 \
@@ -50,21 +42,25 @@ ONLY_FOR_ARCHS_REASON=	requires prebuilt bootstrap compiler
 # librust*so and fails.
 CONFLICTS_BUILD=	rust \
 			rust-nightly
-CONFLICTS_INSTALL=	rust
+CONFLICTS_INSTALL=	rust-nightly
 
-RUST_SOURCE=	${DISTNAME}-src${EXTRACT_SUFX}
 RUST_BOOT=	rust-stage0-${RUST_BOOT_SIG}.tar.bz2
-#RUST_BOOT_SIG=	2015-04-27-857ef6e-freebsd-x86_64-18925db56f6298cc190d1f41615ab5871de1dda0
-
 RUST_BOOT_SIG=	2015-05-24-ba0e1cd-freebsd-x86_64-370db40613f5c08563ed7e38357826dd42d4e0f8
+
+# Rust's libraries are named librustc_${component}-${RUST_VSN_HASH}.so.
+# The hash depends on Rust version and channel. See
+# $(CFG_FILENAME_EXTRA) definition in src/main.mk.
+RUST_VSN=	${PORTVERSION:R}
+RUST_CHANNEL=	${PORTNAME:S/^rust-//}
+RUST_VSN_HASH!=	/usr/bin/printf '%s' ${RUST_VSN}-${RUST_CHANNEL} | /sbin/md5 -q | cut -c 1-8
+PLIST_SUB+=	RUST_VSN_HASH=${RUST_VSN_HASH}
+
 USES=		gmake python:2,build
 HAS_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-valgrind --disable-docs \
 		--enable-clang --mandir=${MANPREFIX}/man \
-		--release-channel=nightly
+		--release-channel=${RUST_CHANNEL}
 
-
-MAKE_JOBS_UNSAFE=yes
 # Use LLVM from ports, instead of the copy shipped with rust.
 LLVM_VER=	36
 BUILD_DEPENDS+=	llvm${LLVM_VER}>=0:${PORTSDIR}/devel/llvm${LLVM_VER}
@@ -79,7 +75,7 @@ LLNEXTGEN_DESC=		Build with grammar verification
 
 LLNEXTGEN_BUILD_DEPENDS=	LLnextgen:${PORTSDIR}/devel/llnextgen
 
-.include <bsd.port.pre.mk>
+.include <bsd.port.options.mk>
 
 .if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000000
 BROKEN=		Only compiles on FreeBSD 10 and 11
@@ -90,17 +86,17 @@ IGNORE=		please use lang/rust-dragonfly instead
 .endif
 
 post-extract:
+	@(${RMDIR} ${WRKSRC}/src/compiler-rt && \
+	  ${MV} ${WRKSRC_compiler_rt} ${WRKSRC}/src/compiler-rt)
+	@(${RMDIR} ${WRKSRC}/src/rt/hoedown && \
+	  ${MV} ${WRKSRC_hoedown} ${WRKSRC}/src/rt/hoedown)
+	@(${RMDIR} ${WRKSRC}/src/jemalloc && \
+	  ${MV} ${WRKSRC_jemalloc} ${WRKSRC}/src/jemalloc)
+	@(${RMDIR} ${WRKSRC}/src/rust-installer && \
+	  ${MV} ${WRKSRC_rust_installer} ${WRKSRC}/src/rust-installer)
 	@${MKDIR} ${WRKSRC}/dl
-	@${LN} -sf ${DISTDIR}/${RUST_BOOT} ${WRKSRC}/dl
-	@${RMDIR} ${WRKSRC}/src/compiler-rt
-	@${LN} -sf ${WRKSRC}/../compiler-rt-${RT_TAG} ${WRKSRC}/src/compiler-rt
-	@${RMDIR} ${WRKSRC}/src/jemalloc
-	@${LN} -sf ${WRKSRC}/../jemalloc-${JEMALLOC_TAG} ${WRKSRC}/src/jemalloc
-	@${RMDIR} ${WRKSRC}/src/rust-installer
-	@${LN} -sf ${WRKSRC}/../rust-installer-${INSTALLER_TAG} ${WRKSRC}/src/rust-installer
-	@${RMDIR} ${WRKSRC}/src/rt/hoedown
-	@${LN} -sf ${WRKSRC}/../hoedown-${HOEDOWN_TAG} ${WRKSRC}/src/rt/hoedown
-	@(cd ${WRKSRC} && find . -type d -exec chmod 0755 {} \;)
+	${LN} -sf ${DISTDIR}/${RUST_BOOT} ${WRKSRC}/dl
+	(cd ${WRKSRC} && find . -type d -exec chmod 0755 {} \;)
 
 # In case the previous "make stage" failed, this ensures rust's
 # install.sh won't backup previously staged files before reinstalling
@@ -128,12 +124,8 @@ post-install:
 		${STAGEDIR}${PREFIX}/bin/rustdoc \
 		${STAGEDIR}${PREFIX}/lib/*.so \
 		${STAGEDIR}${PREFIX}/lib/rustlib/*/lib/*.so
-	@${RM} \
-		${STAGEDIR}${PREFIX}/lib/rustlib/components \
-		${STAGEDIR}${PREFIX}/lib/rustlib/manifest-rustc \
-		${STAGEDIR}${PREFIX}/lib/rustlib/rust-installer-version \
-		${STAGEDIR}${PREFIX}/lib/rustlib/uninstall.sh
-	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	@${MV} ${STAGEDIR}${PREFIX}/share/doc/rust/* ${STAGEDIR}${DOCSDIR}
-	@${RMDIR} ${STAGEDIR}${PREFIX}/share/doc/rust
-.include <bsd.port.post.mk>
+.if ${PORT_OPTIONS:MDOCS}
+	@${MV} ${STAGEDIR}${PREFIX}/share/doc/rust ${STAGEDIR}${DOCSDIR}
+.endif
+
+.include <bsd.port.mk>
