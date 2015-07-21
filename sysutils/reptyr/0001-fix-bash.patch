@@ -1,0 +1,70 @@
+From f7fe3b1ca2a08409473459141fd23726a4bb1105 Mon Sep 17 00:00:00 2001
+From: Andrey Cherkashin <with.out@me.com>
+Date: Mon, 13 Jul 2015 22:12:17 -0700
+Subject: [PATCH] fix bash
+
+---
+ sysutils/reptyr/Makefile             |  7 ++++++-
+ sysutils/reptyr/files/patch-Makefile | 11 +++++++++++
+ sysutils/reptyr/pkg-plist            |  3 +--
+ 3 files changed, 18 insertions(+), 3 deletions(-)
+ create mode 100644 sysutils/reptyr/files/patch-Makefile
+
+diff --git a/sysutils/reptyr/Makefile b/sysutils/reptyr/Makefile
+index b90c228..edd36ce 100644
+--- a/sysutils/reptyr/Makefile
++++ b/sysutils/reptyr/Makefile
+@@ -14,7 +14,7 @@ USE_GITHUB=	yes
+ GH_ACCOUNT=	nelhage
+ GH_TAGNAME=	6fb15adb4552e170bcd5e648803da83dba57283b
+ 
+-USES=	gmake
++USES=		gmake
+ 
+ OPTIONS_DEFINE=	BASH
+ OPTIONS_SUB=	yes
+@@ -26,8 +26,13 @@ ONLY_FOR_ARCHS=	i386 amd64
+ BROKEN=	does not supported on FreeBSD older than 10.0
+ .endif
+ 
++.if ${PORT_OPTIONS:MBASH}
++BUILD_DEPENDS=	${LOCALBASE}/share/bash-completion/bash_completion:${PORTSDIR}/shells/bash-completion
++.endif
++
+ post-install:
+ 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/reptyr
+ 	${GZIP_CMD} ${STAGEDIR}${PREFIX}/share/man/man1/reptyr.1
+ 	${GZIP_CMD} ${STAGEDIR}${PREFIX}/share/man/fr/man1/reptyr.1
++
+ .include <bsd.port.post.mk>
+diff --git a/sysutils/reptyr/files/patch-Makefile b/sysutils/reptyr/files/patch-Makefile
+new file mode 100644
+index 0000000..1d7f456
+--- /dev/null
++++ b/sysutils/reptyr/files/patch-Makefile
+@@ -0,0 +1,11 @@
++--- Makefile.orig	2015-07-14 04:53:47 UTC
+++++ Makefile
++@@ -43,7 +43,7 @@ ptrace.o: ptrace.h platform/platform.h $
++ clean:
++ 	rm -f reptyr $(OBJS) test/victim.o test/victim
++ 
++-BASHCOMPDIR ?= $(shell $(PKG_CONFIG) --variable=completionsdir bash-completion 2>/dev/null)
+++BASHCOMPDIR ?= /usr/local/share/bash-completion/completions
++ 
++ install: reptyr
++ 	install -d -m 755 $(DESTDIR)$(BINDIR)
+diff --git a/sysutils/reptyr/pkg-plist b/sysutils/reptyr/pkg-plist
+index 960019e..3128f4b 100644
+--- a/sysutils/reptyr/pkg-plist
++++ b/sysutils/reptyr/pkg-plist
+@@ -1,5 +1,4 @@
+-%%BASH%%/etc/bash_completion.d/reptyr
+ bin/reptyr
+ share/man/fr/man1/reptyr.1.gz
+ share/man/man1/reptyr.1.gz
+-%%BASH%%@dir /etc/bash_completion.d
++%%BASH%%share/bash-completion/completions/reptyr
+-- 
+2.4.5
+
