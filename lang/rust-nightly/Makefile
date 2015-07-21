@@ -19,7 +19,7 @@ GH_PROJECT=	rust \
 		hoedown:hoedown \
 		jemalloc:jemalloc \
 		rust-installer:rust_installer
-GH_TAGNAME= 118a5c4c342883606fd96b121d741b133caa0347 \
+GH_TAGNAME= 21dfd24c4b \
 		58ab642:compiler_rt \
 		238c4d5:hoedown \
 		e24a1a0:jemalloc \
