@@ -2,7 +2,8 @@
 # $FreeBSD: head/lang/rust-nightly/Makefile 392106 2015-07-14 22:36:53Z dumbbell $
 
 PORTNAME=	rust-nightly
-PORTVERSION=	1.3.0.20150703
+PORTVERSION=	1.3.0.20150822
+PORTREVISION= 1
 CATEGORIES=	lang
 MASTER_SITES=	http://static.rust-lang.org/stage0-snapshots/:bootstrap
 DISTFILES=	${RUST_BOOT}:bootstrap
@@ -19,7 +20,7 @@ GH_PROJECT=	rust \
 		hoedown:hoedown \
 		jemalloc:jemalloc \
 		rust-installer:rust_installer
-GH_TAGNAME=	7b148381c7 \
+GH_TAGNAME=	50ebf76f2206651beb8f124044b91d178677b646 \
 		58ab642:compiler_rt \
 		238c4d5:hoedown \
 		e24a1a0:jemalloc \
@@ -45,7 +46,7 @@ CONFLICTS_BUILD=	rust \
 CONFLICTS_INSTALL=	rust-nightly
 
 RUST_BOOT=	rust-stage0-${RUST_BOOT_SIG}.tar.bz2
-RUST_BOOT_SIG=	2015-05-24-ba0e1cd-freebsd-x86_64-370db40613f5c08563ed7e38357826dd42d4e0f8
+RUST_BOOT_SIG=	2015-08-11-1af31d4-freebsd-x86_64-de1f36592bac0eeb90c049a8421246652c511b9e
 
 # Rust's libraries are named librustc_${component}-${RUST_VSN_HASH}.so.
 # The hash depends on Rust version and channel. See
@@ -55,7 +56,7 @@ RUST_CHANNEL=	${PORTNAME:S/^rust-//}
 RUST_VSN_HASH!=	/usr/bin/printf '%s' ${RUST_VSN}-${RUST_CHANNEL} | /sbin/md5 -q | cut -c 1-8
 PLIST_SUB+=	RUST_VSN_HASH=${RUST_VSN_HASH}
 
-USES=		gmake python:2,build
+USES=		libedit gmake python:2,build
 HAS_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-valgrind --disable-docs \
 		--enable-clang --mandir=${MANPREFIX}/man \
@@ -65,6 +66,7 @@ CONFIGURE_ARGS=	--disable-valgrind --disable-docs \
 LLVM_VER=	36
 BUILD_DEPENDS+=	llvm${LLVM_VER}>=0:${PORTSDIR}/devel/llvm${LLVM_VER}
 CONFIGURE_ARGS+=--llvm-root=${LOCALBASE}/llvm${LLVM_VER}
+
 
 .if defined(BATCH) || defined(PACKAGE_BUILDING)
 MAKE_ARGS+=	VERBOSE=1
