@@ -3,7 +3,6 @@
 
 PORTNAME=	rust-nightly
 PORTVERSION=	1.4.0.20150822
-PORTREVISION= 1
 CATEGORIES=	lang
 MASTER_SITES=	http://static.rust-lang.org/stage0-snapshots/:bootstrap
 DISTFILES=	${RUST_BOOT}:bootstrap
