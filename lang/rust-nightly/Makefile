@@ -2,7 +2,7 @@
 # $FreeBSD: head/lang/rust-nightly/Makefile 392106 2015-07-14 22:36:53Z dumbbell $
 
 PORTNAME=	rust-nightly
-PORTVERSION=	1.3.0.20150822
+PORTVERSION=	1.4.0.20150822
 PORTREVISION= 1
 CATEGORIES=	lang
 MASTER_SITES=	http://static.rust-lang.org/stage0-snapshots/:bootstrap
@@ -53,7 +53,7 @@ RUST_BOOT_SIG=	2015-08-11-1af31d4-freebsd-x86_64-de1f36592bac0eeb90c049a84212466
 # $(CFG_FILENAME_EXTRA) definition in src/main.mk.
 RUST_VSN=	${PORTVERSION:R}
 RUST_CHANNEL=	${PORTNAME:S/^rust-//}
-RUST_VSN_HASH=	/usr/bin/printf '%s' ${RUST_VSN}-${RUST_CHANNEL} | /sbin/md5 -q | cut -c 1-8
+RUST_VSN_HASH!=	/usr/bin/printf '%s' ${RUST_VSN}-${RUST_CHANNEL} | /sbin/md5 -q | cut -c 1-8
 PLIST_SUB+=	RUST_VSN_HASH=${RUST_VSN_HASH}
 
 USES=		gmake python:2,build
