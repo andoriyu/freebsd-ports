@@ -83,7 +83,7 @@ man/man1/rustdoc.1.gz
 @dir lib/rustlib/x86_64-unknown-freebsd/lib
 @dir lib/rustlib/x86_64-unknown-freebsd
 @dir lib/rustlib
-%%PORTDOCS%%%%DOCSDIR%%/rust/COPYRIGHT
-%%PORTDOCS%%%%DOCSDIR%%/rust/LICENSE-APACHE
-%%PORTDOCS%%%%DOCSDIR%%/rust/LICENSE-MIT
+%%PORTDOCS%%%%DOCSDIR%%/COPYRIGHT
+%%PORTDOCS%%%%DOCSDIR%%/LICENSE-APACHE
+%%PORTDOCS%%%%DOCSDIR%%/LICENSE-MIT
 %%PORTDOCS%%%%DOCSDIR%%/rust/README.md
