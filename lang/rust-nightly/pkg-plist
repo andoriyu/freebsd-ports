@@ -15,6 +15,7 @@ lib/librustc_data_structures-%%RUST_VSN_HASH%%.so
 lib/librustc_driver-%%RUST_VSN_HASH%%.so
 lib/librustc_lint-%%RUST_VSN_HASH%%.so
 lib/librustc_llvm-%%RUST_VSN_HASH%%.so
+lib/librustc_platform_intrinsics-%%RUST_VSN_HASH%%.so
 lib/librustc_privacy-%%RUST_VSN_HASH%%.so
 lib/librustc_resolve-%%RUST_VSN_HASH%%.so
 lib/librustc_trans-%%RUST_VSN_HASH%%.so
@@ -33,6 +34,8 @@ lib/rustlib/manifest-rustc
 lib/rustlib/rust-installer-version
 lib/rustlib/uninstall.sh
 lib/rustlib/x86_64-unknown-freebsd/lib/liballoc-%%RUST_VSN_HASH%%.rlib
+lib/rustlib/x86_64-unknown-freebsd/lib/liballoc_jemalloc-%%RUST_VSN_HASH%%.rlib
+lib/rustlib/x86_64-unknown-freebsd/lib/liballoc_system-%%RUST_VSN_HASH%%.rlib
 lib/rustlib/x86_64-unknown-freebsd/lib/libarena-%%RUST_VSN_HASH%%.rlib
 lib/rustlib/x86_64-unknown-freebsd/lib/libarena-%%RUST_VSN_HASH%%.so
 lib/rustlib/x86_64-unknown-freebsd/lib/libcollections-%%RUST_VSN_HASH%%.rlib
@@ -48,7 +51,6 @@ lib/rustlib/x86_64-unknown-freebsd/lib/libgraphviz-%%RUST_VSN_HASH%%.so
 lib/rustlib/x86_64-unknown-freebsd/lib/liblibc-%%RUST_VSN_HASH%%.rlib
 lib/rustlib/x86_64-unknown-freebsd/lib/liblog-%%RUST_VSN_HASH%%.rlib
 lib/rustlib/x86_64-unknown-freebsd/lib/liblog-%%RUST_VSN_HASH%%.so
-lib/rustlib/x86_64-unknown-freebsd/lib/libmorestack.a
 lib/rustlib/x86_64-unknown-freebsd/lib/librand-%%RUST_VSN_HASH%%.rlib
 lib/rustlib/x86_64-unknown-freebsd/lib/librbml-%%RUST_VSN_HASH%%.rlib
 lib/rustlib/x86_64-unknown-freebsd/lib/librbml-%%RUST_VSN_HASH%%.so
@@ -60,6 +62,7 @@ lib/rustlib/x86_64-unknown-freebsd/lib/librustc_data_structures-%%RUST_VSN_HASH%
 lib/rustlib/x86_64-unknown-freebsd/lib/librustc_driver-%%RUST_VSN_HASH%%.so
 lib/rustlib/x86_64-unknown-freebsd/lib/librustc_lint-%%RUST_VSN_HASH%%.so
 lib/rustlib/x86_64-unknown-freebsd/lib/librustc_llvm-%%RUST_VSN_HASH%%.so
+lib/rustlib/x86_64-unknown-freebsd/lib/librustc_platform_intrinsics-%%RUST_VSN_HASH%%.so
 lib/rustlib/x86_64-unknown-freebsd/lib/librustc_privacy-%%RUST_VSN_HASH%%.so
 lib/rustlib/x86_64-unknown-freebsd/lib/librustc_resolve-%%RUST_VSN_HASH%%.so
 lib/rustlib/x86_64-unknown-freebsd/lib/librustc_trans-%%RUST_VSN_HASH%%.so
@@ -80,7 +83,7 @@ man/man1/rustdoc.1.gz
 @dir lib/rustlib/x86_64-unknown-freebsd/lib
 @dir lib/rustlib/x86_64-unknown-freebsd
 @dir lib/rustlib
-%%PORTDOCS%%%%DOCSDIR%%/COPYRIGHT
-%%PORTDOCS%%%%DOCSDIR%%/LICENSE-APACHE
-%%PORTDOCS%%%%DOCSDIR%%/LICENSE-MIT
-%%PORTDOCS%%%%DOCSDIR%%/README.md
+%%PORTDOCS%%%%DOCSDIR%%/rust/COPYRIGHT
+%%PORTDOCS%%%%DOCSDIR%%/rust/LICENSE-APACHE
+%%PORTDOCS%%%%DOCSDIR%%/rust/LICENSE-MIT
+%%PORTDOCS%%%%DOCSDIR%%/rust/README.md

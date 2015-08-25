@@ -68,9 +68,7 @@ BUILD_DEPENDS+=	llvm${LLVM_VER}>=0:${PORTSDIR}/devel/llvm${LLVM_VER}
 CONFIGURE_ARGS+=--llvm-root=${LOCALBASE}/llvm${LLVM_VER}
 
 
-.if defined(BATCH) || defined(PACKAGE_BUILDING)
 MAKE_ARGS+=	VERBOSE=1
-.endif
 
 OPTIONS_DEFINE=		LLNEXTGEN
 LLNEXTGEN_DESC=		Build with grammar verification
