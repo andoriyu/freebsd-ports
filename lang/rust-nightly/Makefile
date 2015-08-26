@@ -12,19 +12,6 @@ EXTRACT_ONLY=	${DISTNAME}${_GITHUB_EXTRACT_SUFX} \
 		${DISTFILE_jemalloc} \
 		${DISTFILE_rust_installer}
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	rust-lang
-GH_PROJECT=	rust \
-		compiler-rt:compiler_rt \
-		hoedown:hoedown \
-		jemalloc:jemalloc \
-		rust-installer:rust_installer
-GH_TAGNAME=	50ebf76f2206651beb8f124044b91d178677b646 \
-		58ab642:compiler_rt \
-		238c4d5:hoedown \
-		e24a1a0:jemalloc \
-		8e4f8ea:rust_installer
-
 MAINTAINER=	dumbbell@FreeBSD.org
 COMMENT=	Language with a focus on memory safety and concurrency
 
@@ -33,6 +20,19 @@ LICENSE=	APACHE20 \
 LICENSE_COMB=	dual
 LICENSE_FILE=	${WRKSRC}/LICENSE-APACHE \
 		${WRKSRC}/LICENSE-MIT
+
+USE_GITHUB=	yes
+GH_ACCOUNT=	rust-lang
+GH_PROJECT=	rust \
+		compiler-rt:compiler_rt \
+		hoedown:hoedown \
+		jemalloc:jemalloc \
+		rust-installer:rust_installer
+GH_TAGNAME=	50ebf76 \
+		58ab642:compiler_rt \
+		238c4d5:hoedown \
+		e24a1a0:jemalloc \
+		8e4f8ea:rust_installer
 
 ONLY_FOR_ARCHS=	amd64
 ONLY_FOR_ARCHS_REASON=	requires prebuilt bootstrap compiler
@@ -66,7 +66,6 @@ LLVM_VER=	36
 BUILD_DEPENDS+=	llvm${LLVM_VER}>=0:${PORTSDIR}/devel/llvm${LLVM_VER}
 CONFIGURE_ARGS+=--llvm-root=${LOCALBASE}/llvm${LLVM_VER}
 
-
 MAKE_ARGS+=	VERBOSE=1
 
 OPTIONS_DEFINE=		LLNEXTGEN
@@ -95,7 +94,7 @@ post-extract:
 	  ${MV} ${WRKSRC_rust_installer} ${WRKSRC}/src/rust-installer)
 	@${MKDIR} ${WRKSRC}/dl
 	${LN} -sf ${DISTDIR}/${RUST_BOOT} ${WRKSRC}/dl
-	(cd ${WRKSRC} && find . -type d -exec chmod 0755 {} \;)
+	(cd ${WRKSRC} && ${FIND} . -type d -exec ${CHMOD} 0755 {} \;)
 
 # In case the previous "make stage" failed, this ensures rust's
 # install.sh won't backup previously staged files before reinstalling

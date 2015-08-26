@@ -3,7 +3,6 @@
 
 PORTNAME=	rust
 PORTVERSION=	1.2.0
-PORTREVISION=	1
 CATEGORIES=	lang
 MASTER_SITES=	http://static.rust-lang.org/dist/:src \
 		http://static.rust-lang.org/stage0-snapshots/:bootstrap
@@ -68,7 +67,7 @@ IGNORE=		please use lang/rust-dragonfly instead
 post-extract:
 	@${MKDIR} ${WRKSRC}/dl
 	${LN} -sf ${DISTDIR}/${RUST_BOOT} ${WRKSRC}/dl
-	(cd ${WRKSRC} && find . -type d -exec chmod 0755 {} \;)
+	(cd ${WRKSRC} && ${FIND} . -type d -exec ${CHMOD} 0755 {} \;)
 
 # In case the previous "make stage" failed, this ensures rust's
 # install.sh won't backup previously staged files before reinstalling
