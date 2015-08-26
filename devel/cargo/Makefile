@@ -67,7 +67,8 @@ WITH_OPENSSL_PORT=yes
 BUILD_DEPENDS=	${LOCALBASE}/bin/cmake:${PORTSDIR}/devel/cmake \
 		rustc:${PORTSDIR}/lang/rust-nightly
 LIB_DEPENDS=	libssh2.so:${PORTSDIR}/security/libssh2 \
-		libcurl.so:${PORTSDIR}/ftp/curl
+		libcurl.so:${PORTSDIR}/ftp/curl \
+		libgit2.so:${PORTSDIR}/devel/libgit2
 
 # FIXME: Don't add rust as a runtime dependency. As we need rust-nightly
 # to build Cargo, the same version would be pulled by installing Cargo,
@@ -76,7 +77,8 @@ LIB_DEPENDS=	libssh2.so:${PORTSDIR}/security/libssh2 \
 
 HAS_CONFIGURE=	yes
 CONFIGURE_ARGS=	--mandir=${MANPREFIX}/man
-MAKE_ENV+=	LD_LIBRARY_PATH="${WRKSRC}/target/snapshot/cargo/lib"
+MAKE_ENV+= LIBGIT2_SYS_USE_PKG_CONFIG=1
+#LD_LIBRARY_PATH="${WRKSRC}/target/snapshot/cargo/lib"
 
 # git log -1 --date=short --pretty=format:'%cd'
 CFG_VER_DATE=	${PORTVERSION:C/.*\.([0-9]{4})([0-9]{2})([0-9]{2})/\1-\2-\3/}
