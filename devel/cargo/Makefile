@@ -2,7 +2,7 @@
 # $FreeBSD: head/devel/cargo/Makefile 392600 2015-07-20 20:49:38Z dumbbell $
 
 PORTNAME=	cargo
-PORTVERSION=	0.5.0.20150826
+PORTVERSION=	0.5.0.20150830
 CATEGORIES=	devel
 
 MAINTAINER=	dumbbell@FreeBSD.org
@@ -49,7 +49,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	rust-lang
 GH_PROJECT=	${PORTNAME} \
 		rust-installer:rust_installer
-GH_TAGNAME=	6192ef578b \
+GH_TAGNAME=	1d0823b35e \
 		c37d374:rust_installer
 
 CARGO_BOOT_SIG=	x86_64-unknown-freebsd
@@ -67,9 +67,8 @@ WITH_OPENSSL_PORT=yes
 BUILD_DEPENDS=	${LOCALBASE}/bin/cmake:${PORTSDIR}/devel/cmake \
 		rustc:${PORTSDIR}/lang/rust-nightly
 LIB_DEPENDS=	libssh2.so:${PORTSDIR}/security/libssh2 \
-		libcurl.so:${PORTSDIR}/ftp/curl \
-		libgit2.so:${PORTSDIR}/devel/libgit2
-
+		libcurl.so:${PORTSDIR}/ftp/curl
+CONFLICTS_BUILD= libgit2-*
 # FIXME: Don't add rust as a runtime dependency. As we need rust-nightly
 # to build Cargo, the same version would be pulled by installing Cargo,
 # preventing its use with the stable version of Rust.
