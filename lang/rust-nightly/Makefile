@@ -2,7 +2,7 @@
 # $FreeBSD: head/lang/rust-nightly/Makefile 392106 2015-07-14 22:36:53Z dumbbell $
 
 PORTNAME=	rust-nightly
-PORTVERSION=	1.4.0.20150830
+PORTVERSION=	1.4.0.20150901
 CATEGORIES=	lang
 MASTER_SITES=	http://static.rust-lang.org/stage0-snapshots/:bootstrap
 DISTFILES=	${RUST_BOOT}:bootstrap
@@ -28,7 +28,7 @@ GH_PROJECT=	rust \
 		hoedown:hoedown \
 		jemalloc:jemalloc \
 		rust-installer:rust_installer
-GH_TAGNAME=	811868ec6f \
+GH_TAGNAME= 7e3eabc699 \
 		58ab642:compiler_rt \
 		238c4d5:hoedown \
 		e24a1a0:jemalloc \
