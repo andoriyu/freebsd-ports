@@ -2,7 +2,7 @@
 # $FreeBSD: head/devel/cargo/Makefile 392600 2015-07-20 20:49:38Z dumbbell $
 
 PORTNAME=	cargo
-PORTVERSION=	0.5.0.20150830
+PORTVERSION=	0.5.0.20150903
 CATEGORIES=	devel
 
 MAINTAINER=	dumbbell@FreeBSD.org
@@ -49,7 +49,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	rust-lang
 GH_PROJECT=	${PORTNAME} \
 		rust-installer:rust_installer
-GH_TAGNAME=	1d0823b35e \
+GH_TAGNAME=	71f2a9fa9b \
 		c37d374:rust_installer
 
 CARGO_BOOT_SIG=	x86_64-unknown-freebsd
@@ -65,7 +65,7 @@ WITH_OPENSSL_PORT=yes
 # We don't USES=cmake here, because cmake is not Cargo's build system.
 # It's used by a bundled dependency (libgit2).
 BUILD_DEPENDS=	${LOCALBASE}/bin/cmake:${PORTSDIR}/devel/cmake \
-		rustc:${PORTSDIR}/lang/rust-nightly
+		rustc:${PORTSDIR}/lang/rust
 LIB_DEPENDS=	libssh2.so:${PORTSDIR}/security/libssh2 \
 		libcurl.so:${PORTSDIR}/ftp/curl
 CONFLICTS_BUILD= libgit2-*
@@ -84,6 +84,7 @@ CFG_VER_DATE=	${PORTVERSION:C/.*\.([0-9]{4})([0-9]{2})([0-9]{2})/\1-\2-\3/}
 # git rev-parse --short HEAD
 CFG_VER_HASH=	${GH_TAGNAME}
 
+CONFIGURE_TARGET=	x86_64-unknown-freebsd
 .if defined(BATCH) || defined(PACKAGE_BUILDING)
 MAKE_ARGS+=	VERBOSE=1
 .endif

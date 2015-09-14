@@ -13,6 +13,7 @@ lib/librustc_back-%%RUST_VSN_HASH%%.so
 lib/librustc_borrowck-%%RUST_VSN_HASH%%.so
 lib/librustc_data_structures-%%RUST_VSN_HASH%%.so
 lib/librustc_driver-%%RUST_VSN_HASH%%.so
+lib/librustc_front-%%RUST_VSN_HASH%%.so
 lib/librustc_lint-%%RUST_VSN_HASH%%.so
 lib/librustc_llvm-%%RUST_VSN_HASH%%.so
 lib/librustc_platform_intrinsics-%%RUST_VSN_HASH%%.so
@@ -41,6 +42,7 @@ lib/rustlib/x86_64-unknown-freebsd/lib/libarena-%%RUST_VSN_HASH%%.so
 lib/rustlib/x86_64-unknown-freebsd/lib/libcollections-%%RUST_VSN_HASH%%.rlib
 lib/rustlib/x86_64-unknown-freebsd/lib/libcompiler-rt.a
 lib/rustlib/x86_64-unknown-freebsd/lib/libcore-%%RUST_VSN_HASH%%.rlib
+lib/rustlib/x86_64-unknown-freebsd/lib/librustc_front-%%RUST_VSN_HASH%%.so
 lib/rustlib/x86_64-unknown-freebsd/lib/libflate-%%RUST_VSN_HASH%%.rlib
 lib/rustlib/x86_64-unknown-freebsd/lib/libflate-%%RUST_VSN_HASH%%.so
 lib/rustlib/x86_64-unknown-freebsd/lib/libfmt_macros-%%RUST_VSN_HASH%%.so
@@ -86,4 +88,4 @@ man/man1/rustdoc.1.gz
 %%PORTDOCS%%%%DOCSDIR%%/COPYRIGHT
 %%PORTDOCS%%%%DOCSDIR%%/LICENSE-APACHE
 %%PORTDOCS%%%%DOCSDIR%%/LICENSE-MIT
-%%PORTDOCS%%%%DOCSDIR%%/rust/README.md
+%%PORTDOCS%%%%DOCSDIR%%/README.md

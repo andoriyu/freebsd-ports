@@ -1,0 +1,6 @@
+SHA256 (chromium-44.0.2403.125.tar.xz) = 78568ec613443b5b7be83216f2c86cb4e64e7398eee9bbc0a35d1c0cef402452
+SIZE (chromium-44.0.2403.125.tar.xz) = 292968928
+SHA256 (atom-libchromiumcontent-v44.0.2403.125-atom_GH0.tar.gz) = 9a4f2f7cbab83bec994d54c45ff487dd678faa963ca369a7ff1a94a7c80b6178
+SIZE (atom-libchromiumcontent-v44.0.2403.125-atom_GH0.tar.gz) = 393781
+SHA256 (svn2github-python-patch-a336a45801_GH0.tar.gz) = db421c40e1a7359872ba988e0fb631d5101a08533f253391004a2bfaea5ba237
+SIZE (svn2github-python-patch-a336a45801_GH0.tar.gz) = 239582
