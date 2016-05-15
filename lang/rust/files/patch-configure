@@ -1,6 +1,6 @@
---- configure.orig	2015-06-09 09:12:09 UTC
+--- configure.orig	2015-08-04 19:28:47 UTC
 +++ configure
-@@ -695,7 +695,6 @@ putvar CFG_BOOTSTRAP_KEY
+@@ -696,7 +696,6 @@ putvar CFG_BOOTSTRAP_KEY
  
  step_msg "looking for build programs"
  

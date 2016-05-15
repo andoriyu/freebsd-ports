@@ -1,0 +1,10 @@
+--- src/snapshots.txt.orig	2016-05-12 21:09:45 UTC
++++ src/snapshots.txt
+@@ -5,6 +5,7 @@
+   macos-x86_64 0372d52f6d06e3e18c8ffa6f016638b6d082770e
+   winnt-i386 4bacbd3e0219f424740ce35e74a005b007a552aa
+   winnt-x86_64 8fc67036c4c76fbfa1d8532d9b9ac923f9060001
++  freebsd-x86_64 e69fb7675e751842d420e712065e4d692e0e8001
+ 
+ 2016-01-31
+   linux-i386 7e2f9c82e1af5aa43ef3ee2692b985a5f2398f0a

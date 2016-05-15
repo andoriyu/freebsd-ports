@@ -1,9 +1,9 @@
 # Created by: Jean-Sébastien Pédron <dumbbell@FreeBSD.org>
-# $FreeBSD: head/devel/cargo/Makefile 412346 2016-04-01 14:00:51Z mat $
+# $FreeBSD: head/devel/cargo/Makefile 410191 2016-03-05 17:02:42Z jbeich $
 
 PORTNAME=	cargo
-PORTVERSION=	0.10.0
-#PORTREVISION= 1
+PORTVERSION=	0.11.0
+PORTREVISION=	1
 CATEGORIES=	devel
 
 MAINTAINER=	dumbbell@FreeBSD.org
@@ -43,7 +43,8 @@ DISTFILES+=	${CARGO_REGISTRY}:registry
 USE_GITHUB=	yes
 GH_ACCOUNT=	rust-lang
 GH_PROJECT=	rust-installer:rust_installer
-GH_TAGNAME=	4915c75:rust_installer
+GH_TAGNAME=	a046b78 \
+						4915c75:rust_installer
 
 ONLY_FOR_ARCHS=	amd64
 ONLY_FOR_ARCHS_REASON=	requires prebuilt bootstrap cargo
@@ -57,10 +58,10 @@ CARGO_REGISTRY_CUR_HASH=	88ac128001ac3a9a
 
 # We don't USES=cmake here, because cmake is not Cargo's build system.
 # It's used by a bundled dependency (libgit2).
-BUILD_DEPENDS=	cmake:devel/cmake \
-		rustc:${RUST_PORT}
-LIB_DEPENDS=	libssh2.so:security/libssh2 \
-		libcurl.so:ftp/curl
+BUILD_DEPENDS=	cmake:${PORTSDIR}/devel/cmake \
+		rustc:${PORTSDIR}/${RUST_PORT}
+LIB_DEPENDS=	libssh2.so:${PORTSDIR}/security/libssh2 \
+		libcurl.so:${PORTSDIR}/ftp/curl
 RUST_PORT?=	lang/rust
 
 USES=		gmake python:-2.7,build pkgconfig
