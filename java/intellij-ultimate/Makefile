@@ -20,7 +20,7 @@ RUN_DEPENDS=	intellij-fsnotifier>0:java/intellij-fsnotifier \
 		intellij-pty4j>0:java/intellij-pty4j
 
 USE_JAVA=	yes
-JAVA_VERSION=	1.7+
+JAVA_VERSION=	1.8+
 
 NO_ARCH=	yes
 NO_BUILD=	yes
@@ -48,6 +48,13 @@ do-install:
 		${STAGEDIR}${IDEA_HOME}/plugins/gradle/lib/native-platform-osx-i386-0.10.jar \
 		${STAGEDIR}${IDEA_HOME}/plugins/gradle/lib/native-platform-windows-amd64-0.10.jar \
 		${STAGEDIR}${IDEA_HOME}/plugins/gradle/lib/native-platform-windows-i386-0.10.jar
+	@${RM} -r ${STAGEDIR}${IDEA_HOME}/plugins/tfsIntegration/lib/native/hpux/ \
+		${STAGEDIR}${IDEA_HOME}/plugins/tfsIntegration/lib/native/linux/ \
+		${STAGEDIR}${IDEA_HOME}/plugins/tfsIntegration/lib/native/macosx/ \
+		${STAGEDIR}${IDEA_HOME}/plugins/tfsIntegration/lib/native/solaris/ \
+		${STAGEDIR}${IDEA_HOME}/plugins/tfsIntegration/lib/native/win32/ \
+		${STAGEDIR}${IDEA_HOME}/plugins/tfsIntegration/lib/native/aix/
+
 # Remove the bundled native Pty4J support libraries, they are replaced
 # by java/intellij-pty4j
 	@${RM} -r ${STAGEDIR}${IDEA_HOME}/lib/libpty
