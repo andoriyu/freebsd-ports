@@ -3,6 +3,7 @@
 
 PORTNAME=	rust
 PORTVERSION?=	1.9.0
+PORTREVISION?= 1
 CATEGORIES=	lang
 MASTER_SITES=	http://static.rust-lang.org/dist/:src \
 		http://static.rust-lang.org/stage0-snapshots/:bootstrap \
@@ -35,7 +36,7 @@ CONFLICTS_BUILD?=	rust-nightly
 CONFLICTS_BUILD+=	${PKGBASE}
 CONFLICTS_INSTALL?=	rust-nightly
 
-RUST_BOOT=	rust-stage0-${RUST_BOOT_SIG_${ARCH}}.tar.bz2
+RUST_BOOT?=	rust-stage0-${RUST_BOOT_SIG_${ARCH}}.tar.bz2
 
 RUST_BOOT_SIG_x86_64?=	2016-03-18-235d774-dragonfly-x86_64-e790279a7b286ddf2e716ccd3bb1b7f0a386a5c7
 RUST_BOOT_SIG_amd64?=	2016-03-18-235d774-freebsd-x86_64-390b9a9f60f3d0d6a52c04d939a0355f572d03b3

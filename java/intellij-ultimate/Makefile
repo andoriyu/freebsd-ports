@@ -5,7 +5,7 @@
 # Vadim Zhukov <zhuk@openbsd.org>
 
 PORTNAME=	intellij
-PORTVERSION=	2016.1.2
+PORTVERSION=	2016.1.3
 CATEGORIES=	java devel
 MASTER_SITES=	https://download.jetbrains.com/idea/ \
 		http://download.jetbrains.com/idea/
@@ -25,7 +25,7 @@ JAVA_VERSION=	1.8+
 NO_ARCH=	yes
 NO_BUILD=	yes
 
-WRKDIST=	${WRKDIR}/idea-IU-145.971.21
+WRKDIST=	${WRKDIR}/idea-IU-145.1617.8
 
 .include "common.mk"
 

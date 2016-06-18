@@ -1,3 +1,4 @@
+TIMESTAMP = 1465523576
 SHA256 (rustc-beta-x86_64-unknown-freebsd.tar.gz) = 13698b50316218c01044d32bd32a3b95ba9d2c0e0f3d6c4dab96e530ee97226e
 SIZE (rustc-beta-x86_64-unknown-freebsd.tar.gz) = 47812923
 SHA256 (rust-lang-rust-1.10.0.20160509-0e7cb8b_GH0.tar.gz) = 9d2d620cd765680cdc52e1f63303558225f5d5b7e1ae84233b24435f5d2b9cbf
