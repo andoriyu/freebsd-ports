@@ -1,7 +1,7 @@
 # Created by: Jean-Sébastien Pédron <dumbbell@FreeBSD.org>
-# $FreeBSD: head/lang/rust-nightly/Makefile 412409 2016-04-02 15:11:59Z jbeich $
+# $FreeBSD: head/lang/rust-nightly/Makefile 419100 2016-07-26 07:39:29Z dumbbell $
 
-PORTVERSION=	1.10.0.20160509
+PORTVERSION=	1.13.0.20160820
 PKGNAMESUFFIX=	-nightly
 DISTNAME=	#
 DISTFILES=	#
@@ -23,22 +23,23 @@ GH_PROJECT=	rust \
 		jemalloc:jemalloc \
 		libc:liblibc \
 		rust-installer:rust_installer
-GH_TAGNAME= 0e7cb8b \
-		57315f7:compiler_rt \
-		238c4d5:hoedown \
-		aab1c0a:jemalloc \
-		c37d374:rust_installer \
-		7265c17:liblibc
+GH_TAGNAME=	 4901896 \
+		8598065:compiler_rt \
+		a3736a0:hoedown \
+		e058ca6:jemalloc \
+		5066b7d:liblibc \
+		c37d374:rust_installer
 
-CONFLICTS_BUILD=	rust # see FIXME in lang/rust
+BUILD_DEPENDS=		cmake:devel/cmake
+
+CONFLICTS_BUILD=	rust # see FIXME in `pre-fetch` in lang/rust/Makefile
 CONFLICTS_INSTALL=	rust
 
-
-RUST_BOOT=	rustc-beta-x86_64-unknown-freebsd.tar.gz
+RUST_BOOT_VERSION=	beta
 
 PORT_LLVM_EXTRACT_ONLY_OFF=	${DISTFILE_llvm}
 PORT_LLVM_GH_PROJECT_OFF=	llvm:llvm
-PORT_LLVM_GH_TAGNAME_OFF=	7513452:llvm
+PORT_LLVM_GH_TAGNAME_OFF=	c3eb3c7:llvm
 PORT_LLVM_VARS_OFF=		NOPRECIOUSMAKEVARS=1 # ARCH
 
 post-extract:	slave-post-extract

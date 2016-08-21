@@ -1,9 +1,8 @@
 # Created by: Jean-Sébastien Pédron <dumbbell@FreeBSD.org>
-# $FreeBSD: head/devel/cargo/Makefile 410191 2016-03-05 17:02:42Z jbeich $
+# $FreeBSD: head/devel/cargo/Makefile 418326 2016-07-10 15:26:24Z jbeich $
 
 PORTNAME=	cargo
-PORTVERSION=	0.11.0
-PORTREVISION=	1
+PORTVERSION=	0.12.0
 CATEGORIES=	devel
 
 MAINTAINER=	dumbbell@FreeBSD.org
@@ -34,7 +33,7 @@ LICENSE_FILE_MIT=	${WRKSRC}/LICENSE-MIT
 #   This is a collection of mainly shell scripts which are used to
 #   install Cargo.
 
-MASTER_SITES=	https://static.rust-lang.org/cargo-dist/2015-04-02/:bootstrap \
+MASTER_SITES=	https://static.rust-lang.org/cargo-dist/2016-05-22/:bootstrap \
 		LOCAL/jbeich:registry
 .if !defined(SKIP_CARGO_REGISTRY)
 DISTFILES+=	${CARGO_REGISTRY}:registry
@@ -43,8 +42,7 @@ DISTFILES+=	${CARGO_REGISTRY}:registry
 USE_GITHUB=	yes
 GH_ACCOUNT=	rust-lang
 GH_PROJECT=	rust-installer:rust_installer
-GH_TAGNAME=	a046b78 \
-						4915c75:rust_installer
+GH_TAGNAME=	4915c75:rust_installer
 
 ONLY_FOR_ARCHS=	amd64
 ONLY_FOR_ARCHS_REASON=	requires prebuilt bootstrap cargo
@@ -52,16 +50,14 @@ ONLY_FOR_ARCHS_REASON=	requires prebuilt bootstrap cargo
 CARGO_BOOT_SIG=	${ARCH:S/amd64/x86_64/}-unknown-${OPSYS:tl}
 CARGO_BOOT=	${PORTNAME}-nightly-${CARGO_BOOT_SIG}${EXTRACT_SUFX}
 CARGO_REGISTRY=	${PORTNAME}-registry-${DISTVERSIONFULL}.tar.xz
-CARGO_REGISTRY_BOOT_HASH=	1ecc6299db9ec823
-# Like above but with: pnacl-build-helper, libressl-pnacl-sys
-CARGO_REGISTRY_CUR_HASH=	88ac128001ac3a9a
 
 # We don't USES=cmake here, because cmake is not Cargo's build system.
 # It's used by a bundled dependency (libgit2).
-BUILD_DEPENDS=	cmake:${PORTSDIR}/devel/cmake \
-		rustc:${PORTSDIR}/${RUST_PORT}
-LIB_DEPENDS=	libssh2.so:${PORTSDIR}/security/libssh2 \
-		libcurl.so:${PORTSDIR}/ftp/curl
+BUILD_DEPENDS=	cmake:devel/cmake \
+		${RUST_PORT:T}>=1.5.0:${RUST_PORT}
+LIB_DEPENDS=	libssh2.so:security/libssh2 \
+		libcurl.so:ftp/curl
+RUN_DEPENDS=	rustc:${RUST_PORT}
 RUST_PORT?=	lang/rust
 
 USES=		gmake python:-2.7,build pkgconfig
@@ -80,11 +76,9 @@ OPTIONS_DEFAULT=BOOTSTRAP
 
 BOOTSTRAP_DESC=		Bootstrap using pre-built vendor snapshot
 BOOTSTRAP_CONFIGURE_OFF=--local-cargo="$$(command -v cargo)" # respect PATH
-BOOTSTRAP_VARS_OFF=	EXTRACT_AFTER_ARGS="-s/${CARGO_REGISTRY_BOOT_HASH}/${CARGO_REGISTRY_CUR_HASH}/"
 BOOTSTRAP_DISTFILES=	${CARGO_BOOT}:bootstrap
 BOOTSTRAP_EXTRACT_ONLY=	${DISTFILES:N*\:bootstrap:C/:.*//}
 BOOTSTRAP_MAKE_ENV=	LD_LIBRARY_PATH="${WRKSRC}/target/snapshot/cargo/lib"
-BOOTSTRAP_VARS=		EXTRACT_AFTER_ARGS="-s/${CARGO_REGISTRY_CUR_HASH}/${CARGO_REGISTRY_BOOT_HASH}/"
 .if !exists(/usr/lib/libssl.so.8) # OPENSSL_SHLIBVER
 BOOTSTRAP_VARS+=	WITH_OPENSSL_PORT=yes
 .endif
@@ -100,7 +94,7 @@ post-extract-BOOTSTRAP-on:
 post-patch:
 # Fix mandir and don't install licenses outside of ${_LICENSE_DIR}
 	@${REINPLACE_CMD} -e 's,share/man,man,' \
-		-e 's, LICENSE-[^[:space:]]*,,g' \
+		-e 's,$$(S)LICENSE-[^[:space:]]* ,,g' \
 		${WRKSRC}/Makefile.in
 
 # In case the previous "make stage" failed, this ensures rust's

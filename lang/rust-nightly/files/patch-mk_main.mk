@@ -1,6 +1,6 @@
---- mk/main.mk.orig	2015-09-03 11:50:44 UTC
+--- mk/main.mk.orig	2016-08-21 20:43:18 UTC
 +++ mk/main.mk
-@@ -107,7 +107,7 @@ ifneq ($(wildcard $(NON_BUILD_TARGET)),)
+@@ -135,7 +135,7 @@ ifneq ($(wildcard $(NON_BUILD_TARGET)),)
  CFG_INFO := $(info cfg: non-build target triples $(NON_BUILD_TARGET))
  endif
  
