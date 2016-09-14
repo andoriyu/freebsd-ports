@@ -1,6 +1,6 @@
---- configure.orig	2016-08-20 14:09:53 UTC
+--- configure.orig	2016-09-13 17:54:55 UTC
 +++ configure
-@@ -737,7 +737,6 @@ if [ -n "$CFG_DISABLE_ORBIT" ]; then put
+@@ -744,7 +744,6 @@ if [ -n "$CFG_ENABLE_DEBUG_JEMALLOC" ]; 
  
  step_msg "looking for build programs"
  

@@ -1,4 +1,4 @@
---- src/etc/get-stage0.py.orig	2016-08-20 14:09:53 UTC
+--- src/etc/get-stage0.py.orig	2016-09-13 17:54:55 UTC
 +++ src/etc/get-stage0.py
 @@ -31,7 +31,8 @@ def main(triple):
      filename = 'rustc-{}-{}.tar.gz'.format(channel, triple)

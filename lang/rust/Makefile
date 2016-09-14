@@ -1,11 +1,11 @@
 # Created by: Jyun-Yan You <jyyou@cs.nctu.edu.tw>
-# $FreeBSD: head/lang/rust/Makefile 419974 2016-08-09 21:41:25Z riggs $
+# $FreeBSD: head/lang/rust/Makefile 420500 2016-08-20 05:57:34Z riggs $
 
 PORTNAME=	rust
-PORTVERSION?=	1.10.0
+PORTVERSION?=	1.11.0
 CATEGORIES=	lang
 MASTER_SITES=	http://static.rust-lang.org/dist/:src \
-		http://static.rust-lang.org/dist/:bootstrap \
+		http://static.rust-lang.org/dist/${RUST_BOOT_DATE}/:bootstrap \
 		https://github.com/dhuseby/rust-manual-snapshots/raw/master/:bootstrap \
 		LOCAL/marino:bootstrap
 DISTNAME?=	${PORTNAME}c-${PORTVERSION}
@@ -22,6 +22,8 @@ LICENSE_COMB=	dual
 # APACHE20 license is standard, see Templates/Licenses/APACHE20
 LICENSE_FILE_MIT=	${WRKSRC}/LICENSE-MIT
 
+BUILD_DEPENDS=		cmake:devel/cmake
+
 ONLY_FOR_ARCHS?=	amd64 i386
 ONLY_FOR_ARCHS_REASON=	requires prebuilt bootstrap compiler
 
@@ -36,8 +38,9 @@ CONFLICTS_BUILD?=	rust-nightly
 CONFLICTS_BUILD+=	${PKGBASE}
 CONFLICTS_INSTALL?=	rust-nightly
 
-RUST_BOOT_VERSION?=	1.9.0
+RUST_BOOT_VERSION?=	1.10.0
 RUST_BOOT=		rustc-${RUST_BOOT_VERSION}-${RUST_TARGET}.tar.gz
+RUST_BOOT_DATE?= 2016-08-17
 
 # Rust's libraries are named librustc_${component}-${RUST_VSN_HASH}.so.
 # The hash depends on Rust version and, if the channel is not "stable",
