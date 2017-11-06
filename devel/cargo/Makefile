@@ -2,7 +2,8 @@
 # $FreeBSD: head/devel/cargo/Makefile 418326 2016-07-10 15:26:24Z jbeich $
 
 PORTNAME=	cargo
-PORTVERSION=	0.12.0
+PORTVERSION=	0.14.0.20161014
+PORTREVISION= 1
 CATEGORIES=	devel
 
 MAINTAINER=	dumbbell@FreeBSD.org
@@ -33,7 +34,7 @@ LICENSE_FILE_MIT=	${WRKSRC}/LICENSE-MIT
 #   This is a collection of mainly shell scripts which are used to
 #   install Cargo.
 
-MASTER_SITES=	https://static.rust-lang.org/cargo-dist/2016-05-22/:bootstrap \
+MASTER_SITES=	https://static.rust-lang.org/cargo-dist/2016-09-05/:bootstrap \
 		LOCAL/jbeich:registry
 .if !defined(SKIP_CARGO_REGISTRY)
 DISTFILES+=	${CARGO_REGISTRY}:registry
@@ -41,8 +42,10 @@ DISTFILES+=	${CARGO_REGISTRY}:registry
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	rust-lang
-GH_PROJECT=	rust-installer:rust_installer
-GH_TAGNAME=	4915c75:rust_installer
+GH_PROJECT=	cargo \
+						rust-installer:rust_installer
+GH_TAGNAME= 5f2cc15 \
+						4f99485:rust_installer
 
 ONLY_FOR_ARCHS=	amd64
 ONLY_FOR_ARCHS_REASON=	requires prebuilt bootstrap cargo
@@ -60,8 +63,7 @@ LIB_DEPENDS=	libssh2.so:security/libssh2 \
 RUN_DEPENDS=	rustc:${RUST_PORT}
 RUST_PORT?=	lang/rust
 
-USES=		gmake python:-2.7,build pkgconfig
-USE_OPENSSL=	yes
+USES=		ssl gmake python:-2.7,build pkgconfig
 HAS_CONFIGURE=	yes
 CONFIGURE_ARGS=	--prefix="${PREFIX}" --mandir="${MANPREFIX}/man"
 MAKE_ENV=	ARGS="${CARGO_ARGS}"

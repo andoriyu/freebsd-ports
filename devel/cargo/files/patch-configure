@@ -1,12 +1,10 @@
---- configure.orig	2016-07-04 07:44:08 UTC
+--- configure.orig	2016-09-14 17:33:51 UTC
 +++ configure
-@@ -342,8 +342,7 @@ validate_opt
+@@ -354,7 +354,6 @@ fi
  
  step_msg "looking for build programs"
  
 -probe_need CFG_CURLORWGET  curl wget
--probe_need CFG_PYTHON      python
-+probe_need CFG_PYTHON      python2.7 python2 python
+ probe_need CFG_PYTHON      python2.7 python2 python
  probe_need CFG_CC          cc gcc clang
  
- if [ ! -z "${CFG_LOCAL_RUST_ROOT}" ]; then
