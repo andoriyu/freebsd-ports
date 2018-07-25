@@ -1,10 +1,10 @@
 # Created by: Andrey Cherkashin <andoriyu@gmail.com>
-# $FreeBSD: head/java/intellij-ultimate/Makefile 443845 2017-06-18 18:09:16Z dbn $
+# $FreeBSD: head/java/intellij-ultimate/Makefile 456568 2017-12-17 22:25:02Z bsam $
 
 # Based on the java/intellij port
 
 PORTNAME=	intellij-ultimate
-PORTVERSION=	2017.2.5
+PORTVERSION=	2018.1.1
 CATEGORIES=	java devel
 MASTER_SITES=	https://download.jetbrains.com/idea/ \
 		http://download.jetbrains.com/idea/
@@ -35,7 +35,7 @@ NO_BUILD=	yes
 USE_LDCONFIG=	${IDEA_HOME}/plugins/tfsIntegration/lib/native/freebsd/x86_64/
 USE_LDCONFIG32=	${IDEA_HOME}/plugins/tfsIntegration/lib/native/freebsd/x86/
 
-WRKSRC=	${WRKDIR}/idea-IU-172.4343.14
+WRKSRC=	${WRKDIR}/idea-IU-181.4445.78
 
 .include "${.CURDIR}/../intellij/common.mk"
 
@@ -69,8 +69,6 @@ do-install:
 		${STAGEDIR}${IDEA_HOME}/plugins/tfsIntegration/lib/native/solaris/ \
 		${STAGEDIR}${IDEA_HOME}/plugins/tfsIntegration/lib/native/win32/ \
 		${STAGEDIR}${IDEA_HOME}/plugins/tfsIntegration/lib/native/aix/
-	${STRIP_CMD} ${STAGEDIR}${IDEA_HOME}/plugins/tfsIntegration/lib/native/freebsd/x86/*.so
-	${STRIP_CMD} ${STAGEDIR}${IDEA_HOME}/plugins/tfsIntegration/lib/native/freebsd/x86_64/*.so
 # Remove the bundled native Pty4J support libraries, they are replaced
 # by java/intellij-pty4j
 	@${RM} -r ${STAGEDIR}${IDEA_HOME}/lib/libpty
