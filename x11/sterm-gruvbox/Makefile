@@ -1,8 +1,9 @@
 # Created by: Matthew Donovan <kitchetech@gmail.com>
 # $FreeBSD: head/x11/sterm/Makefile 492707 2019-02-11 18:31:23Z swills $
 
-PORTNAME=	sterm
+PORTNAME=	sterm-gruvbox
 DISTVERSION=	0.8.2
+PORTREVISION=	1
 CATEGORIES=	x11
 MASTER_SITES=	http://dl.suckless.org/st/
 DISTNAME=	st-${PORTVERSION}
@@ -19,7 +20,7 @@ LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 USES=		pkgconfig
 USE_XORG=	x11 xext xft
 
-PLIST_FILES=	bin/st man/man1/st.1.gz
+PLIST_FILES=	bin/st-gruvbox man/man1/st-gruvbox.1.gz
 
 # This way we avoid running tic on st.info which does not work as expected.
 BINARY_ALIAS=	tic=true
@@ -59,7 +60,7 @@ post-patch:
 		${WRKSRC}/config.mk
 
 post-install:
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/st
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/st-gruvbox
 	@${MKDIR} ${STAGEDIR}${DATADIR}
 	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDATA} ${STAGEDIR}${DATADIR}
 
