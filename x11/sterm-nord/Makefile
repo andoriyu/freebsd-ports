@@ -2,8 +2,7 @@
 # $FreeBSD: head/x11/sterm/Makefile 492707 2019-02-11 18:31:23Z swills $
 
 PORTNAME=	sterm-nord
-DISTVERSION=	0.8.2
-PORTREVISION=	1
+DISTVERSION=	0.8.4
 CATEGORIES=	x11
 MASTER_SITES=	http://dl.suckless.org/st/
 DISTNAME=	st-${PORTVERSION}
@@ -14,8 +13,11 @@ COMMENT=	Simple X terminal
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+BUILD_DEPENDS=  harfbuzz>=1.3.0:print/harfbuzz
+
 LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
-		libfreetype.so:print/freetype2
+		libfreetype.so:print/freetype2 \
+		libharfbuzz.so:print/harfbuzz
 
 USES=		pkgconfig
 USE_XORG=	x11 xext xft

@@ -1,6 +1,25 @@
---- Makefile.orig	2019-07-30 03:37:18 UTC
+--- Makefile.orig	2020-10-31 19:48:02 UTC
 +++ Makefile
-@@ -42,11 +42,11 @@ dist: clean
+@@ -4,7 +4,7 @@
+ 
+ include config.mk
+ 
+-SRC = st.c x.c
++SRC = st.c x.c hb.c
+ OBJ = $(SRC:.c=.o)
+ 
+ all: options st
+@@ -22,7 +22,8 @@ config.h:
+ 	$(CC) $(STCFLAGS) -c $<
+ 
+ st.o: config.h st.h win.h
+-x.o: arg.h config.h st.h win.h
++x.o: arg.h config.h st.h win.h hb.h
++hb.o: st.h
+ 
+ $(OBJ): config.h config.mk
+ 
+@@ -42,11 +43,11 @@ dist: clean
  
  install: st
  	mkdir -p $(DESTDIR)$(PREFIX)/bin
