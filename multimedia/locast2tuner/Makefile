@@ -13,6 +13,8 @@ USES=		cargo
 USE_GITHUB=	yes
 GH_ACCOUNT=	wouterdebie
 
+BUILD_DEPENDS= gmake perl5
+
 CARGO_CRATES=   actix-codec-0.4.0-beta.1 \
 	actix-http-3.0.0-beta.3 \
 	actix-macros-0.2.0 \
