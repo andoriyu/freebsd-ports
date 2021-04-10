@@ -9,11 +9,11 @@ COMMENT=	This application provides an interface between locast.org and Plex Medi
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		cargo
+USES=		cargo ssl
 USE_GITHUB=	yes
 GH_ACCOUNT=	wouterdebie
 
-CARGO_ENV=	OPENSSL_DIR=/usr
+CARGO_ENV=	asdOPENSSL_DIR=/usr
 CARGO_CRATES=   actix-codec-0.4.0-beta.1 \
 	actix-http-3.0.0-beta.3 \
 	actix-macros-0.2.0 \
