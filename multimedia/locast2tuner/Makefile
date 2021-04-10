@@ -13,8 +13,6 @@ USES=		cargo
 USE_GITHUB=	yes
 GH_ACCOUNT=	wouterdebie
 
-BUILD_DEPENDS= gmake perl5
-
 CARGO_CRATES=   actix-codec-0.4.0-beta.1 \
 	actix-http-3.0.0-beta.3 \
 	actix-macros-0.2.0 \
@@ -152,7 +150,6 @@ CARGO_CRATES=   actix-codec-0.4.0-beta.1 \
 	opaque-debug-0.3.0 \
 	openssl-0.10.32 \
 	openssl-probe-0.1.2 \
-	openssl-src-111.15.0+1.1.1k \
 	openssl-sys-0.9.60 \
 	os_str_bytes-2.4.0 \
 	parking_lot-0.11.1 \
